@@ -148,14 +148,21 @@ module Linguist
     #
     # Return true or false
     def image?
-      ['.png', '.jpg', '.jpeg', '.gif'].include?(extname)
+      ['.png', '.jpg', '.jpeg', '.gif'].include?(extname.downcase)
     end
 
-    # Public: Is the blob a support 3D model format?
+    # Public: Is the blob a supported 3D model format?
     #
     # Return true or false
     def solid?
-      ['.stl', '.obj'].include?(extname)
+      extname.downcase == '.stl'
+    end
+
+    # Public: Is the blob a PDF?
+    #
+    # Return true or false
+    def pdf?
+      extname.downcase == '.pdf'
     end
 
     MEGABYTE = 1024 * 1024
@@ -267,7 +274,7 @@ module Linguist
 
     # Public: Is the blob a generated file?
     #
-    # Generated source code is supressed in diffs and is ignored by
+    # Generated source code is suppressed in diffs and is ignored by
     # language statistics.
     #
     # May load Blob#data
@@ -282,7 +289,7 @@ module Linguist
     # Excluded:
     # - Files over 0.1MB
     # - Non-text files
-    # - Langauges marked as not searchable
+    # - Languages marked as not searchable
     # - Generated source files
     #
     # Please add additional test coverage to

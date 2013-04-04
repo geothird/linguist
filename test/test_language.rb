@@ -133,7 +133,6 @@ class TestLanguage < Test::Unit::TestCase
     assert_equal Language['Shell'], Language['Gentoo Ebuild'].group
     assert_equal Language['Shell'], Language['Gentoo Eclass'].group
     assert_equal Language['Shell'], Language['Tcsh'].group
-    assert_equal Language['XML'], Language['XSLT'].group
 
     # Ensure everyone has a group
     Language.all.each do |language|
@@ -322,7 +321,7 @@ class TestLanguage < Test::Unit::TestCase
     assert_equal '.t', Language['Turing'].primary_extension
     assert_equal '.ts', Language['TypeScript'].primary_extension
 
-    # This is a nasty requirement, but theres some code in GitHub that
+    # This is a nasty requirement, but there's some code in GitHub that
     # expects this. Really want to drop this.
     Language.all.each do |language|
       assert language.primary_extension, "#{language} has no primary extension"
